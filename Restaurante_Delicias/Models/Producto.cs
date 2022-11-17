@@ -28,25 +28,19 @@ namespace Restaurante_Delicias.Models
         [Display(Name = "Codigo Tipo")]
         public int id_tipo { get; set; }
 
-        [Required]
         [Display(Name = "Tipo")]
         public string desc_tipo { get; set; }
 
         [Required]
         [Display(Name = "Foto")]
-        public string foto
-        {
-            get 
-            {
-                return string.Format("~/img/productos/{0}.jpg", this.id_prod);
-            }
-        }
+        public string foto { get; set; }
 
         public Producto()
         {
             nom_prod = string.Empty;
             desc_prod = string.Empty;
             desc_tipo = string.Empty;
+            foto = string.Empty;
         }
     }
 }

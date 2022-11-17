@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Restaurante_Delicias.Models.Producto>
+
+@{
+    Layout = "_LayoutProducto";
+    ViewData["Title"] = "Mantenimiento";
+}
+<section class="py-5">
+    <div>
+        <h1 class="text-center text-success">Mantenimiento</h1>
+
+        <p>
+            <a asp-action="Crear" class="btn btn-success btn-sm m-1">Nuevo Producto</a>
+            @Html.ActionLink("Reporte", "Reporte", new { /* id=item.PrimaryKey */ }, new {@class="btn btn-primary btn-sm m-1"})
+        </p>
+        <table class="table table-striped mt-3 mb-5">
+            <thead>
+                <tr class="table-dark text-center">
+                    <th>
+                        @Html.DisplayNameFor(model => model.id_prod)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nom_prod)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.desc_prod)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.precio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cantidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.desc_tipo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.foto)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_prod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nom_prod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.desc_prod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cantidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.desc_tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.foto)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item.id_prod }, new {@class="btn btn-warning btn-sm m-1 px-3"})
+                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.id_prod }, new {@class="btn btn-danger btn-sm m-1"})
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+</section>
