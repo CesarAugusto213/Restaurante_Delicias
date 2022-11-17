@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Restaurante_Delicias.Models.Det_boleta>
+
+@{
+    ViewData["Title"] = "ReporteDetBoleta";
+}
+
+<section class="py-5">
+    <h1 class="text-center text-success">Detalle de Boleta</h1>
+    <div class="container px-2 px-lg-3 mt-5">
+        <table class="table table-bordered table-hover text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.num_boleta)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id_prod)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cantidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.subtotal)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.num_boleta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_prod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cantidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.subtotal)
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -1,0 +1,72 @@
+﻿@model Restaurante_Delicias.Models.Producto
+
+@{
+    ViewData["Title"] = "Producto Seleccionado";
+}
+
+<section class="py-5">
+    <h1 class="text-center text-success">Producto Seleccionado</h1>
+    <div class="container px-2 px-lg-5 mb-3">
+        <div class="mx-auto">
+            <h4>Producto</h4>
+            <hr/>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.id_prod)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.id_prod)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.nom_prod)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.nom_prod)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.desc_prod)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.desc_prod)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.precio)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.precio)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.cantidad)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.cantidad)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.desc_tipo)
+                </dt>
+                <dd class = "col-sm-10">
+                    @Html.DisplayFor(model => model.desc_tipo)
+                </dd>
+                <dt class = "col-sm-2">
+                    @Html.DisplayNameFor(model => model.foto)
+                </dt>
+                <dd class = "col-sm-10">
+                    <img height="400px" width="400px" style="object-fit: cover;" src="@Url.Content(Model.foto)"/>
+                </dd>
+            </dl>
+        </div>
+        <div>
+            @using (Html.BeginForm())
+            {
+                @Html.Hidden("id", Model.id_prod)
+                <em>Ingrese la cantidad: </em>
+                @Html.TextBox("Cantidad", 1)
+                <input type="submit" value="Agregar" class="btn btn-primary"/>
+                <a asp-action="Catalogo" asp-controller="Ecommerce" class="btn btn-primary">Volver al catalogo</a>
+            }
+        </div>
+        <div>
+            @ViewBag.mensaje
+        </div>
+    </div>
+</section>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Restaurante_Delicias.Models.Producto>
+
+@{
+    ViewData["Title"] = "Catalogo";
+}
+
+<section class="py-5">
+    <h1 class="text-center text-success">Catalogo de Productos</h1>
+    <div class="container px-2 px-lg-3 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach(var item in Model)
+            {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="imagen_producto card-img-top" src="@Url.Content(item.foto)"/>
+                        <!-- Product details-->
+                        <div class="card-body pt-4 pb-2 px-3">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">
+                                    @Html.DisplayFor(modelItem => item.nom_prod)
+                                </h5>
+                                <!-- Product price-->
+                                <h5>
+                                    S/. @Html.DisplayFor(modelItem => item.precio)
+                                </h5>
+                                <p style="text-align: justify" class="mt-2">
+                                    @Html.DisplayFor(modelItem => item.desc_prod)
+                                </p>
+                                <p class="text-end fst-italic">
+                                    @Html.DisplayFor(modelItem => item.desc_tipo)
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer border-top-0 bg-success">
+                            <div class="text-center">
+                                @Html.ActionLink("Agregar", "Agregar", new {id = item.id_prod}, new {@class="btn btn-outline-light my-2"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

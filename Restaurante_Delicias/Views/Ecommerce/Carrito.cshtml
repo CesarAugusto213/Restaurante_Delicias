@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Restaurante_Delicias.Models.Det_boleta>
+
+@{
+    ViewData["Title"] = "Carrito";
+}
+
+<section class="py-5">
+    <h1 class="text-center text-success">Carrito de Compra</h1>
+    <div class="container px-2 px-lg-3 mt-5">
+        <table class="table table-bordered table-hover text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nom_prod)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.precio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cantidad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.importe)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.foto)
+                    </th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.nom_prod, "Agregar", new {id = item.id_prod})
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cantidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importe)
+                    </td>
+                    <td>
+                        <img height="60" src="@Url.Content(item.foto)"/>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Quitar", "Quitar", new { id = item.id_prod })
+                    </td>
+                </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">
+                        <em>Importe a pagar S/.</em>
+                    </td>
+                    <td>
+                        @ViewBag.total
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div>
+            @ViewBag.mensaje
+        </div>
+        @Html.ActionLink("Facturar", "Facturar", new { total = @ViewBag.total }, new {@class="btn btn-success mr-2"})
+        <a asp-action="Catalogo" asp-controller="Ecommerce" class="btn btn-primary">Seguir comprando</a>
+    </div>
+</section>

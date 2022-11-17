@@ -1,0 +1,15 @@
+﻿.imagen_producto {
+    height: 300px;
+    object-fit: cover;
+}
+
+.form-signin {
+    margin: 0 auto;
+    max-width: 330px;
+    padding: 15px;
+}
+
+.background {
+    background-image: url(../img/back.jpeg);
+    object-fit: none;
+}
