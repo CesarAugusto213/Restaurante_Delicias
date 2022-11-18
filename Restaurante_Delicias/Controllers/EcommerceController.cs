@@ -160,14 +160,12 @@ namespace Restaurante_Delicias.Controllers
         public async Task<IActionResult> ReporteBoleta()
         {
             HttpContext.Session.SetString("Carrito", JsonConvert.SerializeObject(new List<Det_boleta>()));
-            contador();
 
             return View(await Task.Run(() => cab_BoletaADO.listarBoleta()));
         }
 
         public async Task<IActionResult> ReporteDetBoleta(int num_boleta)
         {
-            contador();
             return View(await Task.Run(() => det_BoletaADO.listarDetalles(num_boleta)));
         }
 

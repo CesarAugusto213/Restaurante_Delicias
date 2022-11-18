@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Restaurante_Delicias.Models.Producto>
+
+@{
+    Layout = null;
+}
+
+<style>
+
+    img {
+        margin: 0 0 8px 0;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        color:  white;
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+</style>
+
+<div>
+    <div>
+        <img src="https://i.postimg.cc/tTtcs0Lw/banner.jpg" width="100%" />
+    </div>
+
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.id_prod)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nom_prod)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.desc_prod)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.precio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cantidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.desc_tipo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.foto)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id_prod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nom_prod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.desc_prod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cantidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.desc_tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.foto)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

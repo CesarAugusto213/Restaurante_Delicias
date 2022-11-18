@@ -1,6 +1,7 @@
 using Restaurante_Delicias.ADO;
 
 var builder = WebApplication.CreateBuilder(args);
+IWebHostEnvironment env = builder.Environment;
 
 //Registrar el servico para Inyeccion de Dependencias
 builder.Services.AddSingleton<IProductoADO, ProductoADO>();
@@ -43,5 +44,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=index}/{id?}");
+
+
+Rotativa.AspNetCore.RotativaConfiguration.Setup(env.WebRootPath, "../Rotativa");
 
 app.Run();
